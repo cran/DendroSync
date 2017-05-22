@@ -1,0 +1,21 @@
+#' Iberian Peninsula tree-ring width dataset 
+#'
+#'
+#' This dataset presents tree-ring width chronologies of residual indices published in Shestakova et al. (2016). The dataset contains 30 tree-ring width chronologies of conifer species from the Iberian Peninsula for the period 1950-1999. Tree species are represented by \emph{Abies alba} Mill., \emph{Pinus nigra} subsp. \emph{salzmannii} (Dunal) Franco and \emph{Pinus sylvestris} L. The sampling sites are distributed across three subregions (\emph{north}, \emph{centre} and \emph{south}) of the Iberian Peninsula. Site chronologies are obtained by cross-dating tree-ring width series and posterior detrending and autocorrelation removal with the Friedman supersmoother spline and autoregressive modeling.
+#'
+#'
+#' @name conifersIP
+#' @docType data
+#' @usage data(conifersIP)
+#' @format A \code{data.frame} containing 30 tree-ring chronologies of residual indices for the period 1950-1999. The dataset includes three species (\emph{Abies alba}, \emph{Pinus nigra}, \emph{Pinus sylvestris}) that are distributed across three regions (\emph{north}, \emph{centre} and \emph{south}) in accordance with the latitudinal position of each sampling site.
+#' \code{conifersIP} {has following variables:}
+#' \itemize{
+#'    \item{Year:}{ year of tree-ring formation (1950-1999)}
+#'    \item{Region:}{ geographical region for Iberian Peninsula: north, centre, south}
+#'    \item{Species:}{ tree species: \emph{Abies alba}, \emph{Pinus nigra}, \emph{Pinus sylvestris}}
+#'    \item{Code:}{ specific name of tree-ring width chronology}
+#'    \item{TRW:}{ residual indices of tree-ring width chronologies}}
+#' 
+#' @references Shestakova, T.A., Gutierrez, E., Kirdyanov, A.V., Camarero, J.J., Genova, M., Knorre, A.A., Linares, J.C., Resco de Dios, V., Sanchez-Salguero, R. & Voltas, J. (2016). Forests synchronize their growth in contrasting Eurasian regions in response to climate warming. \emph{Proceedings of the National Academy of Sciences of the United States of America} 113: 662-667.
+#' @keywords datasets
+NULL
