@@ -72,32 +72,48 @@ sync.trend.plot <- function(sync.trend.data){
     
     if(dim(dat)[2] == 4){
           ly <- length(unique(row(dat[4])))-1
-          wyr <- max(dat[4])-min(dat[4])    
+          wyr <- max(dat[[4]])-min(dat[[4]])    
           yrby <- wyr/ly
           q <- ggplot(dat, aes(x = dat[4], y = dat$a_Group))
           q1 <- q + geom_point(size = 3) + geom_line(size = 1) + guides(colour = FALSE, fill = FALSE)+ 
               geom_ribbon(data = dat, aes(ymin = dat$a_Group - dat$SE, ymax = dat$a_Group + dat$SE), alpha = 0.2)+
-              xlab("Windows") + ylab(aexp)+
+              xlab("Year") + ylab(aexp)+
               scale_x_continuous(limits = c(min(dat[4]), max(dat[4])), breaks = seq(min(dat[4]), max(dat[4]), by = yrby))+
-              ggtitle("Broad evaluation synchrony (mBE)")+ theme(plot.title = element_text(hjust = 0.5))
-        }
+              ggtitle("Broad evaluation synchrony (mBE)")+ theme_bw()+
+              theme(plot.title = element_text(hjust = 0.5),
+                  panel.border = element_blank(), 
+                  panel.grid.major = element_blank(),
+                  panel.grid.minor = element_blank(),
+                  axis.line = element_line(colour = "black"),
+                  axis.text=element_text(size=11)
+                  )
+          }
           
     else{
-        gexp <- expression(paste(hat(a)["c"], " ", "synchrony"))
+        gexp <- expression(paste(bold("Within-group "),bolditalic(hat(a)["c"])))
+        texp <-expression(bold("Temporal trends in synchrony patterns"))
+        xexp <- expression(bold("Year"))
         ly <- dim(unique(dat[6]))[1]-1
         wyr <- max(dat[6])-min(dat[6])    
         yrby <- wyr/ly
-        aa1 <- dat[3]-dat[4]
-        aa2 <- dat[3]+dat[4]
+        aa1 <- dat[[3]]-dat[[4]]
+        aa2 <- dat[[3]]+dat[[4]]
         q <- ggplot(dat, aes(x = dat[6], y = dat[3], group = dat$GroupName, colour = factor(dat$GroupName)))
         q1 <- q+geom_point(size = 3)+
-            stat_summary(fun.y = mean, geom = "line", aes(group = dat$GroupName))+
-            guides(fill = guide_legend(title = "GroupName"), colour = FALSE)+
-            scale_x_continuous(limits = c(min(dat[6]), max(dat[6])), breaks = seq(min(dat[6]), max(dat[6]), by = yrby))+
-            scale_y_continuous(limits = c(min(aa1), max(aa2)))+
-            geom_ribbon(data = dat, aes(ymin = aa1, ymax = aa2, fill = dat$GroupName), alpha = 0.4)+
-            xlab("Windows")+ ylab(aexp)+ ggtitle(gexp)+ theme(plot.title = element_text(hjust = 0.5))
-            
+          stat_summary(fun.y = mean, geom = "line", aes(group = dat$GroupName))+
+          guides(fill = guide_legend(title = "Grouping variable"), colour = FALSE)+
+          scale_x_continuous(limits = c(min(dat[6]), max(dat[6])), breaks = seq(min(dat[6]), max(dat[6]), by = yrby))+
+          scale_y_continuous(limits = c(0, 0.55), breaks=c(0,0.1,0.2,0.3,0.4,0.5))+
+          geom_ribbon(data = dat, aes(ymin = aa1, ymax = aa2,fill=factor(dat$GroupName)), colour = FALSE, alpha = 0.2)+
+          xlab(xexp)+ ylab(gexp)+ ggtitle(texp)+ 
+          theme_bw()+
+          theme(plot.title = element_text(hjust = 0.5),
+                panel.border = element_blank(), 
+                panel.grid.major = element_blank(),
+                panel.grid.minor = element_blank(),
+                axis.line = element_line(colour = "black"),
+                axis.text=element_text(size=11)
+                )
         }
     
     print(q1)

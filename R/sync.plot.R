@@ -56,42 +56,57 @@ sync.plot <- function(syncList){
 
   if(dim(aza1)[1] == 1){stop("Broad evaluation plot has not sense (mBE)")}
   
-  aexp <- expression(paste(hat(a)["c"]))
+  aexp <- expression(paste(bold("Within-group "),bolditalic(hat(a)["c"])))
   mdn <- aza1[2,1]
   bexp <- paste(mdn)
   
-  aa1 <- aza1[3]-aza1[4]
-  aa2 <- aza1[3]+aza1[4]
+  aa1 <- aza1[[3]]-aza1[[4]]
+  aa2 <- aza1[[3]]+aza1[[4]]
   am2 <- max(aa2)
   
   p1 <- ggplot(aza1, aes(x=aza1$GroupName,y=aza1$a_Group))+
-          geom_errorbar(aes(ymin = aa1, ymax = aa2), width = 0.2, size = 0.7, position = pd, col = 4) +
-          geom_point(shape = 16, size = 4, position = pd, col = 4) +
-          labs(x = "Within-Group Synchrony", y = aexp)+
-          expand_limits(y = 0)+
-          scale_y_continuous()+
-          ggtitle(bexp)+
-          theme(axis.title.y = element_text(vjust = 1.8),
-                axis.title.x = element_text(vjust = -0.5),
-                axis.title = element_text(face = "bold"),
-                plot.title = element_text(hjust = 0.5))
+    geom_errorbar(aes(ymin = aa1, ymax = aa2), width = 0.2, size = 0.7, position = pd, col = 4) +
+    geom_point(shape = 16, size = 4, position = pd, col = 4) +
+    labs(x = "Grouping variable", y = aexp)+
+    expand_limits(y = 0)+
+    scale_y_continuous()+
+    ggtitle(bexp)+
+    theme_bw()+
+    theme(axis.title.y = element_text(vjust = 1.8),
+          axis.title.x = element_text(vjust = -0.5),
+          axis.title = element_text(face = "bold"),
+          plot.title = element_text(hjust = 0.5),
+          axis.text=element_text(size=11),
+          panel.border = element_blank(), 
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          axis.line = element_line(colour = "black")
+          )
   
-  ab1 <- aza2[3]-aza2[4]
-  ab2 <- aza2[3]+aza2[4]
+  aexp1 <- expression(paste(bold("Between-group "),bolditalic(hat(a)["c"])))
+  ab1 <- aza2[[3]]-aza2[[4]]
+  ab2 <- aza2[[3]]+aza2[[4]]
   
   cexp <- paste(mdn)
   
   p2 <- ggplot(aza2, aes(x = aza2$GroupName, y = aza2$a_betw_Grp))+
-          geom_errorbar(aes(ymin = ab1, ymax = ab2), width = 0.2, size = 0.7, position = pd, col = "royalblue") +
-          geom_point(shape = 16, size = 4, position = pd, col = "royalblue") +
-          labs(x = "Between-Group Synchrony",y = aexp)+
-          expand_limits(y = c(0, am2))+
-          scale_y_continuous()+
-          ggtitle(cexp)+    
-          theme(axis.title.y = element_text(vjust = 1.8),
-                axis.title.x = element_text(vjust = -0.5),
-                axis.title = element_text(face = "bold"),
-                plot.title = element_text(hjust = 0.5))
+    geom_errorbar(aes(ymin = ab1, ymax = ab2), width = 0.2, size = 0.7, position = pd, col = "royalblue") +
+    geom_point(shape = 16, size = 4, position = pd, col = "royalblue") +
+    labs(x = "Grouping variable",y = aexp1)+
+    expand_limits(y = c(0, am2))+
+    scale_y_continuous()+
+    ggtitle(cexp)+
+    theme_bw()+
+    theme(axis.title.y = element_text(vjust = 1.8),
+          axis.title.x = element_text(vjust = -0.5),
+          axis.title = element_text(face = "bold"),
+          plot.title = element_text(hjust = 0.5),
+          axis.text=element_text(size=11),
+          panel.border = element_blank(), 
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          axis.line = element_line(colour = "black")
+          )
   
   grid.arrange(p1, p2, ncol = 2)
   }
