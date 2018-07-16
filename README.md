@@ -6,7 +6,7 @@ A Set of Tools for Calculating Spatial Synchrony Between Tree-Ring Chronologies.
 
 * Dendrosync is an R library that provides functions for the calculation and plotting of synchrony in the tree growth from tree-ring width chronologies (TRW index). It combines variance-covariance (VCOV) mixed modelling with functions that quantify the degree to which TRW chronologies contain a common temporal signal. It also implements temporal trends in spatial synchrony using a moving window. These methods can also be used with other kind of eacological variables that have temporal autocorrelation corrected. 
 
-* Version 0.1.1
+* Version 0.1.2
 
 * Depends: R (>= 3.1.2), nlme, ggplot2
 

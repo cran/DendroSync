@@ -52,7 +52,7 @@ The function makes a line chart showing synchrony trends across years from a dat
  # using taxonomic grouping criteria (i.e. Species) and BIC
  geo.tot.trend <- sync.trend(TRW ~ Code, varTime = "Year", varGroup = "Species", 
                     data = conifersIP, window = 30, lag = 5, selection.method = c("BIC"),
-                    all.mod = TRUE)
+                    null.mod = F, all.mod = TRUE)
  geo.tot.trend
  #Selected homoscedastic and heteroscedastic within-group trends by BIC
  sync.trend.plot(geo.tot.trend)

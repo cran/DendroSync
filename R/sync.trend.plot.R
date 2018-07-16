@@ -47,7 +47,7 @@
 #'  # using taxonomic grouping criteria (i.e. Species) and BIC
 #'  geo.tot.trend <- sync.trend(TRW ~ Code, varTime = "Year", varGroup = "Species", 
 #'                     data = conifersIP, window = 30, lag = 5, selection.method = c("BIC"),
-#'                     all.mod = TRUE)
+#'                     null.mod = F, all.mod = TRUE)
 #'  geo.tot.trend
 #'  #Selected homoscedastic and heteroscedastic within-group trends by BIC
 #'  sync.trend.plot(geo.tot.trend)
@@ -74,7 +74,7 @@ sync.trend.plot <- function(sync.trend.data){
           ly <- length(unique(row(dat[4])))-1
           wyr <- max(dat[[4]])-min(dat[[4]])    
           yrby <- wyr/ly
-          q <- ggplot(dat, aes(x = dat[4], y = dat$a_Group))
+          q <- ggplot(dat, aes(x = dat[[4]], y = dat$a_Group))
           q1 <- q + geom_point(size = 3) + geom_line(size = 1) + guides(colour = FALSE, fill = FALSE)+ 
               geom_ribbon(data = dat, aes(ymin = dat$a_Group - dat$SE, ymax = dat$a_Group + dat$SE), alpha = 0.2)+
               xlab("Year") + ylab(aexp)+
@@ -98,12 +98,14 @@ sync.trend.plot <- function(sync.trend.data){
         yrby <- wyr/ly
         aa1 <- dat[[3]]-dat[[4]]
         aa2 <- dat[[3]]+dat[[4]]
-        q <- ggplot(dat, aes(x = dat[6], y = dat[3], group = dat$GroupName, colour = factor(dat$GroupName)))
+        am2 <- max(aa2)
+        
+        q <- ggplot(dat, aes(x = dat[[6]], y = dat[[3]], group = dat$GroupName, colour = factor(dat$GroupName)))
         q1 <- q+geom_point(size = 3)+
           stat_summary(fun.y = mean, geom = "line", aes(group = dat$GroupName))+
           guides(fill = guide_legend(title = "Grouping variable"), colour = FALSE)+
           scale_x_continuous(limits = c(min(dat[6]), max(dat[6])), breaks = seq(min(dat[6]), max(dat[6]), by = yrby))+
-          scale_y_continuous(limits = c(0, 0.55), breaks=c(0,0.1,0.2,0.3,0.4,0.5))+
+          scale_y_continuous(limits = c(0, am2))+
           geom_ribbon(data = dat, aes(ymin = aa1, ymax = aa2,fill=factor(dat$GroupName)), colour = FALSE, alpha = 0.2)+
           xlab(xexp)+ ylab(gexp)+ ggtitle(texp)+ 
           theme_bw()+
