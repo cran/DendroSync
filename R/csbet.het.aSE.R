@@ -53,7 +53,7 @@ csbet.het.aSE  <- function(model){
     Ba_H_vrGr <- sapply(SpHet1, function(SpHet1) {
       Z <- (t1)/sqrt((t1+t2+SpHet1)*(t1+t2+SpHet2))
     } )
-    Ba_H_vrGr <- diag(Ba_H_vrGr) 
+    Ba_H_vrGr <- diag(as.matrix(Ba_H_vrGr)) 
     BvrGr <- as.list(Ba_H_vrGr)
     B_H_SE_vrGr <- sapply(BvrGr, function(BvrGr1) {
       Ny <- (max(model$data$vrTi)-min(model$data$vrTi))-1

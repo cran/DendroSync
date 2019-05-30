@@ -81,9 +81,9 @@
 #'  
 dendro.varcov<-function(formula, varTime = "", varGroup = "", data = stop("A data.frame must be provided"),
                       homoscedastic = TRUE, null.mod = FALSE, all.mod = FALSE) {
-  
+   
   data$vrTi <- data[,varTime]
-  data$vrGr <- data[,varGroup]
+  data$vrGr <- droplevels(data[,varGroup])
   if(data.class(data$vrTi) != "numeric")
     {stop("a numeric time variable must be provided (e.g years)")}
   

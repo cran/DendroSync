@@ -2,7 +2,7 @@
 % Please edit documentation in R/gen.aSE.R
 \name{gen.aSE}
 \alias{gen.aSE}
-\title{within-group synchrony for homoscedastic models}
+\title{Within-group synchrony for homoscedastic models}
 \usage{
 gen.aSE(model)
 }

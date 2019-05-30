@@ -1,4 +1,4 @@
-#' within-group synchrony for homoscedastic models
+#' Within-group synchrony for homoscedastic models
 #'
 #' @description The function calculates for each varGroup stratum the within-group synchrony (a^) and standard error (SE). However, it only works for homoscedastic broad evaluation, narrow evaluation and unstructured models (mBE, mNE, mUN).
 #'

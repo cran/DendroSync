@@ -57,7 +57,7 @@ bet.aSE <- function(model){
     Ba_Spp <- sapply(Sovma1, function(Sovma2) {
       Z <- (Sovma2)/sqrt((Sigma1+summary(model)$sigma^2)*(Sigma3+summary(model)$sigma^2))
       })
-      Ba_Spp <- diag(Ba_Spp) 
+      Ba_Spp <- diag(as.matrix(Ba_Spp))
       BSpp <- as.list(Ba_Spp)
 
     BetSE_Spp <- sapply(BSpp, function(BSpp1) {
