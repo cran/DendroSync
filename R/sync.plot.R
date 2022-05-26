@@ -30,7 +30,7 @@
 #' 
 #' @import ggplot2 
 #' @import gridExtra
-#' 
+#' @import methods
 #'  
 #' @export sync.plot
 #' 
@@ -38,7 +38,7 @@
 sync.plot <- function(syncList){
   
   stopifnot(is.list(syncList))
-  if (class(syncList) != "sync") {
+  if (is(syncList,"sync") == FALSE) {
     stop("'syncList' is no a list output of function sync")
   }
   

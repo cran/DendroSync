@@ -33,7 +33,7 @@
 #'  \item{mHeUN}{ an object of class "lme" representing the linear mixed-effects model fit of the heteroscedastic variant of a general positive-definite matrix structure or unstructured. See \code{\link{lmeObject}} for the components of the fit.} 
 #' 
 #'  \itemize{\item{for \code{all.mod = TRUE}:}}
-#'  \item{}{ The function returns the homoscedastic and heteroscedastic versions of all fitted models.} 
+#'  \item{all.mod}{ The function returns the homoscedastic and heteroscedastic versions of all fitted models.} 
 #' 
 #' @author 
 #' Josu G. Alday, Tatiana A. Shestakova, Victor Resco de Dios, Jordi Voltas

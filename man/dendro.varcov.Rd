@@ -38,7 +38,7 @@ The function returns a \code{list} containing the following components:
  \item{mHeUN}{ an object of class "lme" representing the linear mixed-effects model fit of the heteroscedastic variant of a general positive-definite matrix structure or unstructured. See \code{\link{lmeObject}} for the components of the fit.} 
 
  \itemize{\item{for \code{all.mod = TRUE}:}}
- \item{}{ The function returns the homoscedastic and heteroscedastic versions of all fitted models.}
+ \item{all.mod}{ The function returns the homoscedastic and heteroscedastic versions of all fitted models.}
 }
 \description{
 The function calculates variance-covariance (VCOV) mixed models from a \code{data.frame} with tree-ring width index and years for each chronology following the methodology described in Shestakova et al. (2014). 

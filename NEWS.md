@@ -1,3 +1,12 @@
+# DendroSync 0.1.4
+ 
+## New features
+* Minor issues from the previous DendroSync version 0.1.3 have been corrected. For example, some symbols in the Package pdf description version.
+
+## To-Do list
+
+* Unfortunately, we are still working on Vignette to explain how to get BLUPs (best linear unbiased predictors) and related plots from the fitted models. The vignette still needs more work so pull requests are greatly appreciated.
+
 # DendroSync 0.1.3
  
 ## New features

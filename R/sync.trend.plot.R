@@ -55,7 +55,8 @@
 #'  
 #'
 #' @import ggplot2
-#'
+#' @import methods
+#' 
 #' @export sync.trend.plot
 #' 
 #'  
@@ -63,7 +64,7 @@
 sync.trend.plot <- function(sync.trend.data){
   
   stopifnot(is.data.frame(sync.trend.data))
-  if(class(sync.trend.data)[1] != "sync.trend") {
+  if(is(sync.trend.data,"sync.trend") == FALSE) {
     stop("'sync.trend.data' is no data.frame output of function sync.trend")
   }
    

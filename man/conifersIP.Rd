@@ -4,14 +4,16 @@
 \name{conifersIP}
 \alias{conifersIP}
 \title{Iberian Peninsula tree-ring width dataset}
-\format{A \code{data.frame} containing 30 tree-ring chronologies of residual indices for the period 1950-1999. The dataset includes three species (\emph{Abies alba}, \emph{Pinus nigra}, \emph{Pinus sylvestris}) that are distributed across three regions (\emph{north}, \emph{centre} and \emph{south}) in accordance with the latitudinal position of each sampling site.
+\format{
+A \code{data.frame} containing 30 tree-ring chronologies of residual indices for the period 1950-1999. The dataset includes three species (\emph{Abies alba}, \emph{Pinus nigra}, \emph{Pinus sylvestris}) that are distributed across three regions (\emph{north}, \emph{centre} and \emph{south}) in accordance with the latitudinal position of each sampling site.
 \code{conifersIP} {has following variables:}
 \itemize{
    \item{Year:}{ year of tree-ring formation (1950-1999)}
    \item{Region:}{ geographical region for Iberian Peninsula: north, centre, south}
    \item{Species:}{ tree species: \emph{Abies alba}, \emph{Pinus nigra}, \emph{Pinus sylvestris}}
    \item{Code:}{ specific name of tree-ring width chronology}
-   \item{TRW:}{ residual indices of tree-ring width chronologies}}}
+   \item{TRW:}{ residual indices of tree-ring width chronologies}}
+}
 \usage{
 data(conifersIP)
 }
